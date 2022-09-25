@@ -22,35 +22,20 @@
         <div class="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
+                    <a class="navbar-brand" href="/">Home</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarColor03">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Home
-                                    <span class="visually-hidden">(current)</span>
-                                </a>
+                                <a class="nav-link active" href="/woman">Woman</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                                <a class="nav-link" href="/man">Man</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                                <a class="nav-link" href="/kids">Kids</a>
                             </li>
                         </ul>
                         <form class="d-flex">
@@ -60,8 +45,27 @@
                     </div>
                 </div>
             </nav>
-            <div class="container" style="font-size: 50px">
-                Basic webshop
+            <div class="container" style="padding-top: 1em; padding-bottom: 1em">
+                <div style="float: right">
+                    @guest
+                        <a href="/login" style = "color: #334c52">Log in</a> |
+                        <a href="/register" style = "color: #334c52">Register</a>
+					@else
+					    <div class="mt-3 space-y-1" style = "color: #334c52">
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}" style = "color: #334c52">
+                                @csrf
+
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-responsive-nav-link>
+                            </form>
+					    </div>
+				    @endif
+                </div>
+                <h1 style="font-size: 50px">Basic webshop</h1>
             </div>
         </div>
 
